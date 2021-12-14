@@ -1,0 +1,31 @@
+{
+  "name": "ts-final",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsc && node dist/index.js",
+    "watch": "npx tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PasqualeCrea/ts-final/issues"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.2",
+    "@types/figlet": "^1.5.4",
+    "@types/inquirer": "^8.1.3",
+    "@types/node": "^16.11.12"
+  },
+  "dependencies": {
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PasqualeCrea/ts-final.git"
+  },
+  "homepage": "https://github.com/PasqualeCrea/ts-final#readme",
+  "description": ""
+}
