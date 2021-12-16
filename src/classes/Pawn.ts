@@ -5,7 +5,6 @@ export class Pawn {
     x: number;
     y: number;
     grid: Grid;
-
     constructor(grid: Grid, symbol: string, x: number = 0, y: number = 0) {
         this.grid = grid;
         this.symbol = symbol;
@@ -13,7 +12,7 @@ export class Pawn {
         this.y = y;
     }
 
-    private move(x: number, y: number) {
+    protected move(x: number, y: number) {
         if (x <= this.grid.grid[0].length - 1 && x >= 0 && y <= this.grid.grid.length - 1 && y >= 0) {
             let oldX = this.x;
             let oldY = this.y;

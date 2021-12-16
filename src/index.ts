@@ -3,17 +3,14 @@ import { Grid } from "./classes/Grid";
 import { Pawn } from "./classes/Pawn";
 import inquirer from 'inquirer';
 import figlet from 'figlet';
-/*
-Functions to help you see what is available in the SpecialChars class.
-SpecialChars.sampleSymbols();
-SpecialChars.sampleColors();
-SpecialChars.sampleDecorate();
-*/
+import { Arrow } from "./classes/Arrow";
 
-
-let board = new Grid(3, 3);
-let pawn = new Pawn(board, "Q", 0, 0);
+let board = new Grid(5, 5);
+let pawn = new Pawn(board, `${SpecialChars.FG.CYAN}${SpecialChars.SNOWFLAKE}${SpecialChars.RESET}`, 2, 2);
 board.insertPawn(pawn);
+board.spawnArrow();
+
+
 
 async function loop(defaultChoice?: string): Promise<any> {
     board.render();
@@ -29,12 +26,13 @@ async function loop(defaultChoice?: string): Promise<any> {
                 'Down',
                 'Left',
                 'Right',
+                'Stay',
                 'Quit'
             ],
             default: defaultChoice
         }
     ]);
-    //@ts-ignore
+
     switch (answers['Move']) {
         case 'Up':
             pawn.moveUp();
@@ -52,11 +50,13 @@ async function loop(defaultChoice?: string): Promise<any> {
             quit = true;
             break;
     }
-
     console.clear();
 
     if (!quit) {
-        //@ts-ignore
+        board.incrementRound();
+        board.addScore();
+        board.moveArrows();
+        board.spawnArrow();
         return loop(answers['Move']);
     } else {
         return false;
